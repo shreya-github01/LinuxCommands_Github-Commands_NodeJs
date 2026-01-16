@@ -1,0 +1,158 @@
+# ================================
+# LINUX BASICS STUDY NOTES
+# User: shreya
+# ================================
+
+
+# -------- Kernel Space & User Space --------
+# Kernel space OS ka core hota hai (CPU, memory, drivers)
+# User space jahan user commands aur scripts chalata hai
+
+
+# -------- Directory Structure Create Karna --------
+mkdir -p practice/2026/january/week1     # ek hi command mein poora folder structure create karta hai
+
+
+# -------- Files Create Karna --------
+cd practice/2026/january/week1           # week1 directory ke andar jane ke liye
+touch s1.txt s2.txt                      # s1.txt aur s2.txt empty files create karta hai
+
+
+# -------- Files List (Inode + Permissions) --------
+ls -li                                   # inode number, permissions aur link count dikhata hai
+
+
+# -------- Hard Link Create & Verify --------
+ln s1.txt s1_link.txt                    # s1.txt ka hard link banata hai
+rm s1.txt                                # original file delete karta hai
+ls -li                                   # inode same hai ya nahi check karta hai
+cat s1_link.txt                          # hard link se file ka content show karta hai
+
+
+# -------- File Search (find) --------
+find . -name "s1.txt"                    # current directory aur uske andar s1.txt search karta hai
+
+
+# -------- User Information Commands --------
+whoami                                   # currently kaunsa user logged in hai batata hai (shreya)
+id                                       # user ki UID, GID aur group info dikhata hai
+
+
+# -------- Process Management --------
+kill 1234                                # given PID wale process ko terminate karta hai
+
+
+# -------- File Permissions (chmod) --------
+chmod 777 s1.txt                         # s1.txt ko read, write, execute sab permission deta hai
+chmod u+x Shreya.sh                      # sirf owner ko execute permission deta hai
+
+
+# -------- File Ownership (chown) --------
+chown shreya s1.txt                      # s1.txt file ka owner shreya set karta hai
+chown shreya:shreya s1.txt               # owner aur group dono set karta hai
+
+
+# -------- Environment Variables --------
+echo $PATH                               # system ke executable paths show karta hai
+
+
+# -------- File Write & Append --------
+echo "hello" > s1.txt                    # purana data hata kar naya data likhta hai
+echo "world" >> s1.txt                   # file ke end mein data add karta hai
+
+
+# -------- Date & Calendar --------
+date                                     # current date aur time show karta hai
+cal                                      # current month ka calendar dikhata hai
+cal 2026                                 # poore saal ka calendar dikhata hai
+
+
+# -------- Pipes & grep --------
+cat s1.txt | grep "hello"                # file ka output grep ko dekar word search karta hai
+
+
+# -------- GREP Commands --------
+grep "and" s1.txt                        # s1.txt mein "and" search karta hai
+grep -i "and" s1.txt                    # case-insensitive search karta hai
+grep -c "and" s1.txt                    # word count karta hai
+
+
+# -------- GREP Practice Questions --------
+grep "failed" server.log                # server.log mein failed wali lines dhoondta hai
+grep "TODO" *.py                        # sabhi python files mein TODO search karta hai
+grep -ci "password" config.txt          # password kitni baar aaya count karta hai
+grep -i "gmail" contacts.txt            # gmail emails find karta hai
+
+
+# -------- Special Directory Symbols --------
+.                                        # dot current directory ko represent karta hai
+..                                       # double dot parent directory ko represent karta hai
+cd ..                                    # ek level upar jane ke liye
+
+
+# -------- nano Editor Commands --------
+nano Shreya.sh                           # nano editor mein file open karta hai
+# Ctrl + O  -> file save karne ke liye
+# Enter     -> filename confirm karne ke liye
+# Ctrl + X  -> nano editor se bahar aane ke liye
+
+
+# -------- Shell Script Example --------
+#!/bin/bash
+name="Shreya"                            # name variable store karta hai
+city="Jhansi"                            # city store karta hai
+color="Purple"                           # favourite color store karta hai
+
+echo "My name is $name, I live in $city and my favourite color is $color"
+
+
+# -------- Script Run Karna --------
+chmod u+x Shreya.sh                      # script ko executable banata hai
+./Shreya.sh                              # script run karta hai
+
+
+# -------- FOR Loop --------
+for i in {1..5}
+do
+  echo "Number: $i"                      # 1 se 5 tak numbers print karta hai
+done
+
+
+# -------- WHILE Loop --------
+i=10                                    # starting value set karta hai
+while [ $i -ge 1 ]                      # jab tak i >= 1 ho
+do
+  echo $i                               # current value print karta hai
+  i=$((i-1))                            # value decrement karta hai
+done
+
+
+# -------- IF-ELSE --------
+num=10                                  # variable assign kiya
+if [ $num -gt 33 ]                      # condition check karta hai
+then
+  echo "passed"                         # true hone par
+else
+  echo "failed"                         # false hone par
+fi                                      # if ka end
+
+
+# -------- Inode Concept --------
+# inode file ki actual identity hoti hai
+# filename badalne se inode nahi badalta
+# file tab delete hoti hai jab last hard link remove ho
+
+
+# -------- Copy, Move, Remove --------
+cp s1.txt s1_backup.txt                 # file ki copy banata hai
+mv s1_backup.txt s2.txt                 # file rename ya move karta hai
+rm s2.txt                               # file delete karta hai
+rm -r practice                          # directory recursively delete karta hai
+
+
+# -------- Miscellaneous --------
+history                                 # pehle use kiye commands dikhata hai
+clear                                   # terminal screen clean karta hai
+exit                                    # terminal session close karta hai
+
+
