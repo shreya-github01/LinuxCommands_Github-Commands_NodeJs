@@ -1,0 +1,22 @@
+Commands Running JavaScript files:
+
+node filename.js - Execute a JavaScript file
+node -v or node --version - Check Node.js version
+node -h or node --help - Display help information
+
+NPM (Node Package Manager) Commands
+Package management:
+
+npm init - Initialize a new Node.js project (creates package.json)
+npm install or npm i - Install all dependencies from package.json
+npm install <package> - Install a specific package
+npm install <package> --save-dev or npm i <package> -D - Install as dev dependency
+npm uninstall <package> - Remove a package
+npm update - Update packages
+npm outdated - Check for outdated packages
+
+Running scripts:
+
+npm start - Run the start script
+npm test - Run tests
+npm run <script> - Run a custom script from package.json
