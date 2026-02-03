@@ -1,0 +1,175 @@
+# ==================== VERSION CONTROL ====================
+# Track changes to code over time
+# Code ki history maintain karta hai, kisi bhi version pe wapas ja sakte ho
+
+
+# ==================== GIT INIT ====================
+# Initialize a new Git repository
+git init
+# Current folder ko git repository bana deta hai
+
+
+# ==================== GIT CLONE ====================
+# Copy a remote repository to local machine
+git clone https://github.com/user/repo.git
+git clone https://github.com/user/repo.git my-folder-name
+
+
+# ==================== STAGING AREA ====================
+# Temporary area where files are prepared before commit
+# Working Directory → Staging Area → Repository
+# Ye beech ki jagah hai jaha files commit se pehle ready hoti hain
+
+
+# ==================== GIT ADD ====================
+# Add files to staging area
+git add filename.txt
+git add file1.txt file2.txt
+git add .
+git add *.js
+
+
+# ==================== GIT COMMIT ====================
+# Save staged changes to repository history
+git commit -m "Initial commit"
+
+
+# ==================== COMMIT LIFECYCLE ====================
+# 1. Modified → 2. Staged → 3. Committed
+# git add se staged, git commit se committed
+
+
+# ==================== GIT DIFF ====================
+# Show differences between files
+git diff                    # Working vs Staging
+git diff --staged           # Staging vs Last commit
+
+
+# ==================== GIT LOG ====================
+# View commit history
+git log
+git log --oneline
+git log --author="name"
+git log --since="2 weeks ago"
+git log -3# Last 3 commits
+
+
+# ==================== BRANCHES ====================
+# Separate line of development
+git branch                     # List all branches
+git branch feature-login       # New branch banao
+git checkout feature-login     # Branch switch
+git checkout -b new-feature    # Create + switch
+git branch -d feature-name     # Branch delete
+git branch -D feature-name     # Force delete
+
+
+# ==================== GIT MERGE ====================
+# Combine branches together
+git checkout main
+git merge feature-login
+
+
+
+# ==================== GIT REBASE ====================
+# Reapply commits on top of another branch
+git checkout feature-login
+git rebase main
+# History linear aur clean rahti hai
+# Public/shared branches pe mat karo
+
+
+# ==================== CONFLICT RESOLUTION ====================
+# When two branches have conflicting changes
+git merge feature-branch
+# CONFLICT ho gaya!
+
+# File mein dikhenga:
+# <<<<<<< HEAD
+# Your changes
+# =======
+# Their changes
+# >>>>>>> feature-branch
+
+# Manual fix karo, fir:
+git add resolved-file.txt
+git commit -m "Resolved merge conflict"
+
+
+# ==================== REMOTE REPOSITORY ====================
+# Repository hosted on server (GitHub, GitLab)
+git remote add origin https://github.com/user/repo.git
+git remote -v                          # Remote URLs dekho
+git push origin main                   # Local se remote par bhejo
+git push -u origin main               # -u se tracking set hoti hai
+git pull origin main                   # Remote se local mein lao
+git fetch origin                       # Download karo but merge mat karo
+
+
+# ==================== PULL REQUEST ====================
+# Request to merge your changes into main branch
+# GitHub/GitLab pe hota hai, not a git command
+
+# Flow:
+git checkout -b feature-xyz
+# ... code changes ...
+git add .
+git commit -m "Added feature XYZ"
+git push origin feature-xyz
+# GitHub pe jao → "Compare & Pull Request" → Create PR
+
+
+# ==================== CODE REVIEW ====================
+# Team members review code before merging
+# PR mein reviewers comments karte hain
+# Approve hone ke baad merge hota hai
+
+
+# ==================== COLLABORATION WORKFLOW ====================
+# Complete team workflow:
+
+# Step 1: Latest code lao
+git pull origin main
+
+# Step 2: Nayi branch banao
+git checkout -b feature-payment
+
+# Step 3: Code likho aur commit karo
+git add .
+git commit -m "Implemented payment gateway"
+
+# Step 4: Push karo
+git push origin feature-payment
+
+# Step 5: PR banao GitHub pe
+
+# Step 6: Review feedback pe changes
+git add .
+git commit -m "Fixed review comments"
+git push origin feature-payment
+
+# Step 7: Merge after approval
+# GitHub pe merge button
+
+
+# ==================== USEFUL COMMANDS ====================
+git status                    # Current state check karo
+
+git checkout -- filename.txt  # File ke changes discard karo
+git rm filename.txt          # File delete + stage
+
+
+# ==================== EXAMPLE ====================
+
+mkdir my-project
+cd my-project
+git init
+echo "# My Project" > README.md
+git add README.md
+git commit -m "Initial commit"
+git remote add origin https://github.com/username/my-project.git
+git push -u origin main
+git commit -m "Added login page"
+git push origin add-login
+git checkout main
+git pull origin main
